@@ -1,4 +1,4 @@
--- Install packer
+
 local install_path = vim.fn.stdpath 'data' .. '/site/pack/packer/start/packer.nvim'
 local is_bootstrap = false
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
@@ -10,9 +10,11 @@ end
 -- stylua: ignore start
 require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'                                                    -- Package manager
-  -- use 'tpope/vim-fugitive'                                                        -- Git commands in nvim
+  -- use 'tpope/vim-fugitive'                                                        -- Git commands in nvim'
+  use 'TimUntersberger/neogit'
   -- use 'tpope/vim-rhubarb'                                                         -- Fugitive-companion to interact with github
   use { 'lewis6991/gitsigns.nvim', requires = { 'nvim-lua/plenary.nvim' } }       -- Add git related info in the signs columns and popups
+  use 'sindrets/diffview.nvim'
   use 'numToStr/Comment.nvim'                                                     -- "gc" to comment visual regions/lines
   use 'nvim-treesitter/nvim-treesitter'                                           -- Highlight, edit, and navigate code
   use 'nvim-treesitter/nvim-treesitter-textobjects'                               -- Additional textobjects for treesitter
@@ -129,7 +131,17 @@ require('packer').startup(function(use)
   --     "antoinemadec/FixCursorHold.nvim"
   --   }
   -- }
+  --
 
+  -- octo
+  use {
+    'pwntester/octo.nvim',
+    requires = {
+      'nvim-lua/plenary.nvim',
+      'nvim-telescope/telescope.nvim',
+      'kyazdani42/nvim-web-devicons',
+    },
+  }
   -- THEMES 
   use 'rebelot/kanagawa.nvim'
   use 'shaunsingh/nord.nvim'
@@ -583,6 +595,13 @@ cmp.setup.cmdline(':', {
     { name = 'cmdline' }
   })
 }) 
+
+-- neogit 
+require('neogit').setup {}
+
+require('diffview').setup {}
+-- octo
+require("octo").setup {}
 
 -- which key
 require("which-key").setup {}
