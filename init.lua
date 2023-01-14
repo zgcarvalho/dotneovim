@@ -34,7 +34,8 @@ require('packer').startup(function(use)
   -- use { 'hrsh7th/nvim-cmp', requires = { 'hrsh7th/cmp-nvim-lsp' } }               -- Autocompletion
   -- use { 'L3MON4D3/LuaSnip', requires = { 'saadparwaiz1/cmp_luasnip' } }           -- Snippet Engine and Snippet Expansion
   use 'mjlbach/onedark.nvim'                                                      -- Theme inspired by Atom
-  use 'nvim-lualine/lualine.nvim'                                                 -- Fancier statusline
+  -- use 'nvim-lualine/lualine.nvim'                                                 -- Fancier statusline
+  use 'feline-nvim/feline.nvim'
   use 'lukas-reineke/indent-blankline.nvim'                                       -- Add indentation guides even on blank lines
   use 'tpope/vim-sleuth'                                                          -- Detect tabstop and shiftwidth automatically
   use { 'nvim-telescope/telescope.nvim', requires = { 'nvim-lua/plenary.nvim' } } -- Fuzzy Finder (files, lsp, etc)
@@ -147,6 +148,7 @@ require('packer').startup(function(use)
   use 'shaunsingh/nord.nvim'
   use { "catppuccin/nvim", as = "catppuccin" }
   use 'nyoom-engineering/oxocarbon.nvim'
+  use "EdenEast/nightfox.nvim"
 
   if is_bootstrap then
     require('packer').sync()
@@ -215,7 +217,8 @@ vim.o.termguicolors = true
 -- vim.g.nord_italic = true
 -- vim.g.nord_uniform_diff_background = true
 -- require('nord').set()
-vim.cmd.colorscheme "catppuccin-mocha"
+vim.cmd.colorscheme "terafox"
+require('ui.feline')
 
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
@@ -248,15 +251,15 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 -- Set lualine as statusline
 -- See `:help lualine.txt`
-require('lualine').setup {
-  options = {
-    icons_enabled = false,
-    -- theme = 'nord',
-    theme = 'catppuccin',
-    component_separators = '|',
-    section_separators = '',
-  },
-}
+-- require('lualine').setup {
+--   options = {
+--     icons_enabled = false,
+--     -- theme = 'nord',
+--     -- theme = 'catppuccin',
+--     component_separators = '|',
+--     section_separators = '',
+--   },
+-- }
 
 -- Enable Comment.nvim
 require('Comment').setup()
